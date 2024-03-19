@@ -403,6 +403,10 @@ img {
   text-decoration: none;
 }
 
+.project-card-text {
+  color: var(--text-color);
+}
+
 .project-card-content {
   padding: 32px 16px;
   border: 1px solid var(--accent-color);
@@ -848,39 +852,42 @@ button.button-portfolio {
   gap: 8px;
 }
 
-.checkbox {
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--modal-overlay-color);
+input[type="checkbox"] {
+  appearance: none;
+  display: block;
+  width: 20px;
+  height: 20px;
   border-radius: 2px;
-  position: relative;
-  transition: border-color var(--transition-duration)
-      var(--transition-timing-function),
-    background-color var(--transition-duration)
-      var(--transition-timing-function);
+  border: 1px solid var(--modal-overlay-color);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0;
+
+  transition: var(--transition-duration);
+  transition-property: background-size, background-color, border-color;
 }
 
-.checkbox-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  fill: var(--white-color);
+input[type="checkbox"]:checked {
+  background-color: var(--accent-color);
+  border-color: transparent;
+  background-size: 10px;
+}
+
+.unchecked {
+  opacity: 1;
+  transition: 400ms;
+}
+
+.checked {
   opacity: 0;
-  transition: opacity var(--transition-duration)
-    var(--transition-timing-function);
+  transition: 400ms;
 }
 
-.checkbox:focus-within {
-  border-color: var(--primary-brand);
+input[type="checkbox"]:checked + .checkbox-icon > .unchecked {
+  opacity: 0;
 }
 
-.checkbox:has(.checkbox-input:checked) {
-  border-color: var(--primary-brand);
-  background-color: var(--primary-brand);
-}
-
-.checkbox-input:checked + .checkbox-icon {
+input[type="checkbox"]:checked + .checkbox-icon > .checked {
   opacity: 1;
 }
 /* #endregion Modalwindow */
